@@ -4,6 +4,7 @@ int main()
 {
     int n;
     int sum_of_pow = 0, pow_of_sum = 0;
+    printf("Enter number : ");
     scanf("%d", &n);
     for (int i = 1; i <= n; i++)
     {
