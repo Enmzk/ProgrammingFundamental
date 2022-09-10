@@ -1,17 +1,45 @@
 #include<stdio.h>
-int main()
+#include<windows.h>
+#include<time.h>
+#include<conio.h>
+void gotoxy(int x, int y)
 {
-    int len,n;
-    int count = 0;
-    scanf("%d", &len);
-    scanf("%d", &n);
-    char word1[len], word2[len];
-    char chain[n][len];
-    char broken[len];
-    for (int k = 0; k < n; k++)
-    {
-        scanf("%[^\n]s", chain[k]);
-    }
-    printf("%s", chain[1]);
+COORD c = { x, y };
+SetConsoleCursorPosition( GetStdHandle(STD_OUTPUT_HANDLE) , c);
+}
+void draw_ship(int x,int y)
+{
+gotoxy(x,y); printf(" <-0-> ");
+}
+void draw_bullet(int x,int y)
+{
+gotoxy(x,y); printf("^");
+}
+void clear_bullet(int x,int y)
+{
+gotoxy(x,y); printf(" ");
+}
+int main()
+{char ch='.';
+int x=38,y=20;
+int bx,by,i;
+int bullet = 0;
+draw_ship(x,y);
+do {
+if (_kbhit()){
+ch=_getch();
+if(ch=='a') {draw_ship(--x,y);}
+if(ch=='s') {draw_ship(++x,y);}
+if(bullet!=1 && ch==' ') {bullet=1; bx=x+3; by=y-1;}
+fflush(stdin);
+}
+if (bullet==1) {
 
+clear_bullet(bx,by);
+if (by==2) { bullet=0;} else { draw_bullet(bx,--by); }
+
+}
+Sleep(100);
+} while (ch!='x');
+return 0;
 }
