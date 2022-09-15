@@ -103,7 +103,7 @@ int main()
             }
             if (direction == 'P')
             {
-                direction = '.';
+                direction = ' ';
             }
             if (shoot == 'S')
             {
