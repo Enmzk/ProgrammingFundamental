@@ -1,0 +1,5 @@
+Name:Tzuyu	 Level:28	 Score:4532
+Name:Minju	 Level:59	 Score:3355
+Name:Yuna	 Level:22	 Score:2622
+Name:Sohee	 Level:33	 Score:2200
+Name:Eunwoo	 Level:69	 Score:8800
