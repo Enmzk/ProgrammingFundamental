@@ -4,6 +4,13 @@
 #include<stdbool.h>
 #include <thread>
 
+#define screen_x 80
+#define screen_y 25
+
+HANDLE wHnd;
+COORD bufferSize = { screen_x,screen_y };
+SMALL_RECT windowSize = { 0,0,screen_x - 1,screen_y - 1 };
+
 void gotoxy(int,int);
 void draw_ship(int x,int y);
 void draw_bullet(int x, int y);
@@ -15,6 +22,7 @@ char cursor(int x, int y);
 void gen_star(int);
 void scoreboard(int);
 int random(int lower, int upper);
+int setConsole(int x, int y);
 
 int main()
 {
@@ -26,6 +34,7 @@ int main()
     int check = 0;
     int score = 0;
     int x_bullet[10] = {-1,-1,-1,-1,-1,-1}, y_bullet[10] = {-1,-1,-1,-1,-1,-1};
+    setConsole(screen_x, screen_y);
     setcursor(0);
     srand( time( NULL ) );
     gen_star(20);
@@ -295,4 +304,11 @@ void scoreboard(int score)
     setcolor(11, 5);
     gotoxy(74, 0);
     printf("%06d", score);
+}
+int setConsole(int x, int y)
+{
+wHnd = GetStdHandle(STD_OUTPUT_HANDLE);
+SetConsoleWindowInfo(wHnd, TRUE, &windowSize);
+SetConsoleScreenBufferSize(wHnd, bufferSize);
+return 0;
 }

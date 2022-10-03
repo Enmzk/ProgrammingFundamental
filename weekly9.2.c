@@ -2,30 +2,24 @@
 
 int main()
 {
-    int m, n, num;
-    scanf("%d %d", &m, &n);
-    int matrix[m][n];
-    for (int i = 0; i < 2 * m; i++)
+    int n;
+    int odd[5] = {1, 3, 5, 7, 9};
+    int check = 0;
+    scanf("%d", &n);
+    for (int i = 0; i < 5; i++)
     {
-        for (int j = 0; j < n; j++)
+        if (n - (n/10) * 10 == odd[i])
         {
-            if (i < m)
-            {
-                scanf("%d", &matrix[i][j]);
-            }
-            else
-            {
-                scanf("%d", &num);
-                matrix[i-m][j] += num;
-            }
+            check = 1;
+            break;
         }
     }
-     for (int i = 0; i < m; i++)
+    if (check == 1)
     {
-        for (int j = 0; j < n; j++)
-        {
-            printf("%d ", matrix[i][j]);
-        }
-        printf("\n");
+        printf("Odd number");
+    }
+    else
+    {
+        printf("Even number");
     }
 }
